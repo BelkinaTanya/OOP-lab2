@@ -14,12 +14,12 @@ namespace OOPLab2.Model
         private decimal TotalSum()
         {
           
-            return this.Product.Price * this.QuantityOfGoods;
+            return Product.Price * QuantityOfGoods;
         }
 
         public override string ToString()
         {
-            return $"{Product.Name, -20} {Product.Price, -15:f2}  {QuantityOfGoods,-10}{this.TotalSum():f2}";
+            return $"{Product.Name, -20} {Product.Price, -15:f2}  {QuantityOfGoods,-10}{TotalSum():f2}";
         }
 
     }

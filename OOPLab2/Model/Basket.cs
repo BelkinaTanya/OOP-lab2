@@ -44,14 +44,21 @@ namespace OOPLab2.Model
         }
         public void PrintBasket()
         {
-            int index = 1;
-            Console.WriteLine("                   КОРЗИНА");
-            Console.WriteLine("   Наименование         цена, р.   количество      Сумма, р.");
-            foreach (BasketLine basketLine in this.basketLines)
+            if (this.basketLines.FirstOrDefault() == null)
             {
-                Console.WriteLine($"{index++}. {basketLine}");
+                Console.WriteLine("Товаров в корзине нет!");
             }
-            Console.WriteLine("                              Общая сумма товаров: {0:f2}", this.TotalCost());
+            else
+            {
+                int index = 1;
+                Console.WriteLine("                   КОРЗИНА");
+                Console.WriteLine("   Наименование         цена, р.   количество      Сумма, р.");
+                foreach (BasketLine basketLine in basketLines)
+                {
+                    Console.WriteLine($"{index++}. {basketLine}");
+                }
+                Console.WriteLine("                              Общая сумма товаров: {0:f2}", TotalCost());
+            }
         }
     }
 }
