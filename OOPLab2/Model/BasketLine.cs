@@ -7,7 +7,7 @@ using OOPLab2.Interface;
 
 namespace OOPLab2.Model
 {
-    class BasketLine
+    public class BasketLine
     {
         public Product Product { get; set; }
         public int QuantityOfGoods { get; set; }

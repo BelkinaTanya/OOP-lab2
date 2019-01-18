@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace OOPLab2.Model
 {
-    class Category
+    public class Category
     {
         private string _title;
         public string Title

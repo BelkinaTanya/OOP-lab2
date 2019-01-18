@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace OOPLab2.Model
 {
-    class Checkout
+    public class Checkout
     {
         public Customer Customer { get; set; }
         private Basket _paymentList = new Basket();

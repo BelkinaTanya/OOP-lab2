@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOPLab2.Model
 {
-    class Basket
+    public class Basket
     {
         List<BasketLine> basketLines = new List<BasketLine>();
         public Basket() { }

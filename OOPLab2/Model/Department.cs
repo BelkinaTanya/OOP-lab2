@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace OOPLab2.Model
 {
-    class Department: List<Category>
+    public class Department: List<Category>
     {
         private string _title;
         public string Title

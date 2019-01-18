@@ -5,7 +5,7 @@ using OOPLab2.Interface;
 
 namespace OOPLab2.Model
 {
-    class Product: IProduct
+    public class Product: IProduct
     {
         private string _name;
         private string _category;

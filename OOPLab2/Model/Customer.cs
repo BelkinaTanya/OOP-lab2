@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOPLab2.Model
 {
-    class Customer
+    public class Customer
     {
         public string Name { get; set; }
         public string DeliveryAddress { get; set; }

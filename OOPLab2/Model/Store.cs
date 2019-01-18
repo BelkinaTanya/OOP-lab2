@@ -5,8 +5,8 @@ using System.Linq;
 
 namespace OOPLab2.Model
 {
-    class Store: List<Department>, IDisposable
-    {
+     public class Store: List<Department>, IDisposable
+     {
         private string _title;
         private List<Department> _departments;
         public string Title
@@ -24,7 +24,7 @@ namespace OOPLab2.Model
         public void Dispose()
         {
             Dispose();
-        }
+        }       
         public void PrintDepartments()
         {
             int index = 1;

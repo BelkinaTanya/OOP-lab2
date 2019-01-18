@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DepartmentStore", "OOPLab2\DepartmentStore.csproj", "{DE2EA3B1-291A-48E8-857D-4EA24DFB8563}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOPLab2", "OOPLab2\OOPLab2.csproj", "{DE2EA3B1-291A-48E8-857D-4EA24DFB8563}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOPLab2Tests", "OOPLab2Tests\OOPLab2Tests.csproj", "{8002F271-C042-44C0-82CA-FB0DF1956DAD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOPLab2.Tests", "OOPLab2Tests\OOPLab2.Tests.csproj", "{8002F271-C042-44C0-82CA-FB0DF1956DAD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

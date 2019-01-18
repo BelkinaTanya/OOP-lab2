@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOPLab2.Interface
 {
-    class IProduct
+    public class IProduct
     {
         string Name { get; }
         decimal Price { get; set; }
