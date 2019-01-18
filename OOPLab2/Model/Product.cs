@@ -7,10 +7,42 @@ namespace OOPLab2.Model
 {
     class Product: IProduct
     {
-        public string Name { get; }
-        public string Category { get; }
-        public decimal Price { get; set; }
-        public int Quantity { get; set; }
+        private string _name;
+        private string _category;
+        private decimal _price;
+        private int _quantity;
+        public string Name
+        {
+            get => _name;
+            set => _name = value ??
+               throw new ArgumentNullException("Name cannot be null", nameof(value));
+        }
+        public string Category
+        {
+            get => _category;
+            set => _category = value ??
+               throw new ArgumentNullException("Name cannot be null", nameof(value));
+        }
+        public decimal Price
+        {
+            get => _price;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), "Price must be greater than zero");
+                _price = value;
+            }     
+        }
+        public int Quantity
+        {
+            get => _quantity;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), "Quantity must be greater than zero");
+                _quantity = value;
+            }
+        }
         public Product() { }
         public Product(string name, string category, decimal price, int quantity)
         {

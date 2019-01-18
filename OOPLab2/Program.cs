@@ -30,6 +30,10 @@ namespace OOPLab2
             {
                 Console.WriteLine(ex.Message);
             }
+            catch (ArgumentNullException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
         static void ApplicationMenu(Store store, List<Product> products, Basket basket)
         {
@@ -70,7 +74,9 @@ namespace OOPLab2
                 Console.WriteLine($"{index++}. {product}");
             }
             Console.WriteLine();
-            Console.WriteLine("Добавьте по номеру интересующие товары в корзину. Для возврата в меню нажмите ноль.");
+            Console.WriteLine("0. Меню");
+            Console.WriteLine();
+            Console.WriteLine("Добавьте по номеру интересующие товары в корзину или нажмине ноль для возврата в главное меню.");
             Console.Write("Ваш выбор: ");
             int productSelection = int.Parse(Console.ReadLine());
             while (productSelection != 0)
@@ -94,6 +100,12 @@ namespace OOPLab2
                     ViewBasket(store, products, basket);
                     break;
                 case "2":
+                    if (!CheckTheAvailabilityOfGoodsInTheBasket(basket))
+                    {
+                        Console.WriteLine();
+                        ApplicationMenu(store, products, basket);
+                        break;
+                    }
                     Console.WriteLine("Выберете номер товара из списка.");
                     Console.Write("Ваш выбор: ");
                     int productSelection1 = int.Parse(Console.ReadLine());
@@ -101,6 +113,12 @@ namespace OOPLab2
                     ViewBasket(store, products, basket);
                     break;
                 case "3":
+                    if (!CheckTheAvailabilityOfGoodsInTheBasket(basket))
+                    {
+                        Console.WriteLine();
+                        ApplicationMenu(store, products, basket);
+                        break;
+                    }
                     Console.WriteLine("Выберете номер товара для удаления.");
                     Console.Write("Ваш выбор: ");
                     int productSelection2 = int.Parse(Console.ReadLine());
@@ -148,6 +166,16 @@ namespace OOPLab2
             Console.WriteLine("Оплатить {0:f2} руб.", checkout.GetPaymentAmount());
             Console.WriteLine("Спасибо что выбрали наш магазин!");
         }
+        static bool CheckTheAvailabilityOfGoodsInTheBasket (Basket basket)
+        {
+            if (basket.lines.FirstOrDefault() != null)
+                return true;
+            else
+            {
+                Console.WriteLine("Товаров в корзине нет!");
+                return false;
+            }
+        }
         static void FileLoadStore(Store store)
         {
             using (StreamReader listDepartments = new StreamReader("Department.txt", Encoding.Default))
@@ -170,7 +198,7 @@ namespace OOPLab2
                     store.Find(x => x.Title.Contains(elements[1])).Add(new Category(elements[0]));
                     str = listCategories.ReadLine();
                 }
-            }     
+            }
         }
         static void DataBaseFileLoad(List<Product> products)
         {
