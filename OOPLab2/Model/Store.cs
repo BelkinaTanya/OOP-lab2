@@ -8,7 +8,7 @@ namespace OOPLab2.Model
     class Store: List<Department>, IDisposable
     {
         private string _title;
-        private List<Department> departments;
+        private List<Department> _departments;
         public string Title
         {
             get => _title;
@@ -19,11 +19,11 @@ namespace OOPLab2.Model
         public Store(string title)
         {
             Title = title;
-            departments = new List<Department>();
+            _departments = new List<Department>();
         }
         public void Dispose()
         {
-            this.Dispose();
+            Dispose();
         }
         public void PrintDepartments()
         {

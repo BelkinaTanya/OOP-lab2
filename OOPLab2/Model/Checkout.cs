@@ -7,7 +7,7 @@ namespace OOPLab2.Model
     class Checkout
     {
         public Customer Customer { get; set; }
-        private Basket paymentList = new Basket();
+        private Basket _paymentList = new Basket();
         public Checkout(string name, string address)
         {
             Customer = new Customer { Name = name, DeliveryAddress = address };
@@ -16,13 +16,13 @@ namespace OOPLab2.Model
         {
             foreach (BasketLine basketLine in basket.lines)
             {
-                paymentList.AddItem(basketLine.Product);
+                _paymentList.AddItem(basketLine.Product);
             }
         }
         public decimal GetPaymentAmount()
         {
-            if (paymentList.lines.FirstOrDefault() != null)
-                return paymentList.TotalCost();
+            if (_paymentList.lines.FirstOrDefault() != null)
+                return _paymentList.TotalCost();
             else
             {
                 Console.WriteLine("Корзина пуста!");
@@ -32,7 +32,7 @@ namespace OOPLab2.Model
         public void PrintPaymentList()
         {
 
-            if (paymentList == null)
+            if (_paymentList == null)
             {
                 Console.WriteLine("Товаров к оплате нет!");
             }
@@ -40,7 +40,7 @@ namespace OOPLab2.Model
             {
                 int index = 1;
                 Console.WriteLine("   Наименование         цена, р.   количество      Сумма, р.");
-                foreach (BasketLine basketLine in paymentList.lines)
+                foreach (BasketLine basketLine in _paymentList.lines)
                 {
                     Console.WriteLine($"{index++}. {basketLine}");
                 }

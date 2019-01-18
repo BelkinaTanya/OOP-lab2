@@ -14,12 +14,12 @@ namespace OOPLab2.Model
             set => _title = value ??
                 throw new ArgumentNullException("Name cannot be null", nameof(value));
         }
-        private List<Category> categories; 
+        private List<Category> _categories; 
         public Department() { }
         public Department (string title)
         {
             Title = title;
-            categories = new List<Category>();
+            _categories = new List<Category>();
         }
         public override string ToString()
         {
