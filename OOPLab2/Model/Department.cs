@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace OOPLab2.Model
 {
-    public class Department: List<Category>
+    public class Department
     {
         private string _title;
         public string Title
@@ -21,6 +21,22 @@ namespace OOPLab2.Model
             Title = title;
             _categories = new List<Category>();
         }
+        public void AddCategory(Category category)
+        {
+            _categories.Add(category);
+        }
+        public void RemoveCategory(Category category)
+        {
+            _categories.Remove(category);
+        }
+        public void ClearAllListCategory()
+        {
+            _categories.Clear();
+        }
+        public List<Category> GetListCategories()
+        {
+            return _categories;
+        }
         public override string ToString()
         {
             return Title;
@@ -28,10 +44,23 @@ namespace OOPLab2.Model
         public void PrintCategories()
         {
             int index = 1;
-            foreach (Category category in this)
+            foreach (Category category in _categories)
             {
                 Console.WriteLine($"{index++}. {category}");
             }
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+            var department = obj as Department;
+            if (department == null)
+                return false;
+            return department.Title == Title;
+        }
+        public override int GetHashCode()
+        {
+            return Title.GetHashCode();
         }
     }
 }

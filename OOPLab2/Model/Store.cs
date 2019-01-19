@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace OOPLab2.Model
 {
-     public class Store: List<Department>, IDisposable
+     public class Store: IDisposable
      {
         private string _title;
         private List<Department> _departments;
@@ -21,6 +21,18 @@ namespace OOPLab2.Model
             Title = title;
             _departments = new List<Department>();
         }
+        public void AddDepartment(Department department)
+        {
+            _departments.Add(department);
+        }
+        public void RemoveDepartment(Department department)
+        {
+            _departments.Remove(department);
+        }
+        public void ClearAllListDepartment()
+        {
+            _departments.Clear();
+        }
         public void Dispose()
         {
             Dispose();
@@ -28,10 +40,14 @@ namespace OOPLab2.Model
         public void PrintDepartments()
         {
             int index = 1;
-           foreach(Department department in this)
+           foreach(Department department in _departments)
             {
                 Console.WriteLine($"{index++}. {department}");
             } 
+        }
+        public List<Department> GetListDepartments()
+        {           
+            return _departments; 
         }
     }
 }

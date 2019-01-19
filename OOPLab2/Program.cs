@@ -61,13 +61,13 @@ namespace OOPLab2
             store.PrintDepartments();
             Console.Write("Ваш выбор: ");
             int departmentSelection = int.Parse(Console.ReadLine());
-            Console.WriteLine($"Отдел \"{store.ElementAt(departmentSelection - 1)}\" включает следующие категории:");
-            store.ElementAt(departmentSelection - 1).PrintCategories();
+            Console.WriteLine($"Отдел \"{store.GetListDepartments().ElementAt(departmentSelection - 1)}\" включает следующие категории:");
+            store.GetListDepartments().ElementAt(departmentSelection - 1).PrintCategories();
             Console.WriteLine("Выберете номер категории товара:");
             Console.Write("Ваш выбор: ");
             int categorySelection = int.Parse(Console.ReadLine());
-            var rezult = products.Where(product => product.Category == store.ElementAt(departmentSelection - 1).ElementAt(categorySelection - 1).Title);
-            Console.WriteLine($"Категория \"{store.ElementAt(departmentSelection - 1).ElementAt(categorySelection - 1)}\" включает следующие товары:");
+            var rezult = products.Where(product => product.Category == store.GetListDepartments().ElementAt(departmentSelection - 1).GetListCategories().ElementAt(categorySelection - 1).Title);
+            Console.WriteLine($"Категория \"{store.GetListDepartments().ElementAt(departmentSelection - 1).GetListCategories().ElementAt(categorySelection - 1)}\" включает следующие товары:");
             int index = 1;
             foreach (Product product in rezult)
             {
@@ -183,7 +183,7 @@ namespace OOPLab2
                 string str = listDepartments.ReadLine();
                 while (str != null)
                 {
-                    store.Add(new Department(str));
+                    store.AddDepartment(new Department(str));
                     str = listDepartments.ReadLine();
                 }
             }
@@ -195,7 +195,7 @@ namespace OOPLab2
                     int numberOfElementsInARow = 2;   // Категория; Отдел
                     string[] elements = new string[numberOfElementsInARow];
                     elements = str.Split(';');
-                    store.Find(x => x.Title.Contains(elements[1])).Add(new Category(elements[0]));
+                    store.GetListDepartments().Find(x => x.Title.Contains(elements[1])).AddCategory(new Category(elements[0]));
                     str = listCategories.ReadLine();
                 }
             }
