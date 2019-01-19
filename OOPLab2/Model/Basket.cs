@@ -44,7 +44,7 @@ namespace OOPLab2.Model
         }
         public void PrintBasket()
         {
-            if (this.basketLines.FirstOrDefault() == null)
+            if (basketLines.FirstOrDefault() == null)
             {
                 Console.WriteLine("Товаров в корзине нет!");
             }
