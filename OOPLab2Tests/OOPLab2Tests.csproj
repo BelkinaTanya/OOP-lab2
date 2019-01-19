@@ -52,7 +52,8 @@
     <Compile Include="Model\DepartmentTests.cs" />
     <Compile Include="Model\StoreTests.cs" />
     <Compile Include="Model\CategoryTests.cs" />
-    <Compile Include="Model\ProductTest.cs" />
+    <Compile Include="Model\ProductTests.cs" />
+    <Compile Include="Model\BasketLineTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

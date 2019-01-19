@@ -5,7 +5,7 @@ using OOPLab2.Model;
 namespace OOPLab2Tests.Model
 {
     [TestClass]
-    public class ProductTest
+    public class ProductTests
     {
         private string name = "Кукла";
         private string category = "Игрушки";

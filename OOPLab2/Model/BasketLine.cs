@@ -11,7 +11,7 @@ namespace OOPLab2.Model
     {
         public Product Product { get; set; }
         public int QuantityOfGoods { get; set; }
-        private decimal TotalSum()
+        public decimal TotalSum()
         {
           
             return Product.Price * QuantityOfGoods;
