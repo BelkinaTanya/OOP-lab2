@@ -16,5 +16,9 @@ namespace OOPLab2.Model
             Name = name;
             DeliveryAddress = deliveryAddress;
         }
+        public override string ToString()
+        {
+            return $"Информация о покупателе:\nИмя: {Name, -20} Адрес доставки: {DeliveryAddress}";
+        }
     }
 }

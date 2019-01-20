@@ -146,12 +146,12 @@ namespace OOPLab2
             Console.WriteLine("Введите данные обязательные для заполнения:");
             Console.Write("Имя:");
             string nameCustomer = Console.ReadLine();
-            while (string.IsNullOrEmpty(nameCustomer)) 
+            while (string.IsNullOrEmpty(nameCustomer))
             {
                 Console.Write("Данное поле обязательно для заполнения!");
                 Console.Write("\nИмя:");
                 nameCustomer = Console.ReadLine();
-            } 
+            }
             Console.Write("Адрес доставки:");
             var addressCustomer = Console.ReadLine();
             while (string.IsNullOrEmpty(addressCustomer))
@@ -160,9 +160,11 @@ namespace OOPLab2
                 Console.Write("\nАдрес доставки:");
                 addressCustomer = Console.ReadLine();
             }
-            Checkout checkout = new Checkout(nameCustomer, addressCustomer);
+            Checkout checkout = new Checkout();
+            checkout.AddCustomer(new Customer(nameCustomer, addressCustomer));
             checkout.AddPaymentList(basket);
             checkout.PrintPaymentList();
+            Console.WriteLine();
             Console.WriteLine("Оплатить {0:f2} руб.", checkout.GetPaymentAmount());
             Console.WriteLine("Спасибо что выбрали наш магазин!");
         }
