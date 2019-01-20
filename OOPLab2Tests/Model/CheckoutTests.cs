@@ -31,9 +31,11 @@ namespace OOPLab2Tests.Model
             paymentList.AddItem(product2);
 
             checkout.AddPaymentList(paymentList);
+            var rezult1 = checkout.GetPaymentList().lines.Contains(checkout.GetPaymentList().lines.Where(p => p.Product.Name == product.Name).FirstOrDefault());
+            var rezult2 = checkout.GetPaymentList().lines.Contains(checkout.GetPaymentList().lines.Where(p => p.Product.Name == product2.Name).FirstOrDefault());
 
-            Assert.IsTrue(checkout.GetPaymentList().lines.Contains(checkout.GetPaymentList().lines.Where(p => p.Product.Name == product.Name).FirstOrDefault()));
-            Assert.IsTrue(checkout.GetPaymentList().lines.Contains(checkout.GetPaymentList().lines.Where(p => p.Product.Name == product2.Name).FirstOrDefault()));
+            Assert.IsTrue(rezult1);
+            Assert.IsTrue(rezult2);
         }
 
         [TestMethod]

@@ -18,8 +18,9 @@ namespace OOPLab2Tests.Model
         public void AddItemTest_NoItem()
         {
             basket.AddItem(product);
+            var rezult = basket.lines.Where(p => p.Product.Name == product.Name).FirstOrDefault().QuantityOfGoods;
 
-            Assert.AreEqual(basket.lines.Where(p => p.Product.Name == product.Name).FirstOrDefault().QuantityOfGoods, 1);
+            Assert.AreEqual(rezult, 1);
         }
 
         [TestMethod]
@@ -27,8 +28,9 @@ namespace OOPLab2Tests.Model
         {
             basket.AddItem(product);
             basket.AddItem(product);
+            var rezult = basket.lines.Where(p => p.Product.Name == product.Name).FirstOrDefault().QuantityOfGoods;
 
-            Assert.AreEqual(basket.lines.Where(p => p.Product.Name == product.Name).FirstOrDefault().QuantityOfGoods, 2);
+            Assert.AreEqual(rezult, 2);
         }
 
         [TestMethod]
@@ -38,8 +40,9 @@ namespace OOPLab2Tests.Model
             basket.AddItem(product2);
 
             basket.RemoveLine(product2);
+            var rezult = basket.lines.Contains(basket.lines.Where(p => p.Product.Name == product2.Name).FirstOrDefault());
 
-            Assert.IsFalse(basket.lines.Contains(basket.lines.Where(p => p.Product.Name == product2.Name).FirstOrDefault()));  
+            Assert.IsFalse(rezult);  
         }
 
         [TestMethod]
