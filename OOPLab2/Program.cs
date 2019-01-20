@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using OOPLab2.Model;
-//using OOPLab2.Interface;
+using System.Xml.Serialization;
 
 namespace OOPLab2
 {
@@ -89,7 +89,7 @@ namespace OOPLab2
         }
         static void ViewBasket(Store store, List<Product> products, Basket basket)
         {
-            Console.WriteLine("Меню корзины:\n1. Просмотр корзины\n2.Увеличить количество товара\n3.Удалить товар из списка\n4.Очистить корзину\n5.Оформить заказ\n6.Вернуться в меню");
+            Console.WriteLine("Меню корзины:\n1. Просмотр корзины\n2.Увеличить количество товара\n3.Удалить товар из списка\n4.Очистить корзину\n5.Оформить заказ\n6.Сохранить данные корзины\n7.Востановить данные корзины\n8.Вернуться в меню");
             Console.Write("Ваш выбор: ");
             string userChoice = Console.ReadLine();
             switch (userChoice)
@@ -134,12 +134,43 @@ namespace OOPLab2
                     break;
                 case "6":
                     Console.WriteLine();
+                    SaveBasket(basket);
+                    ViewBasket(store, products, basket);
+                    break;
+                case "7":
+                    Console.WriteLine();
+                    LoadBasket(basket);
+                    ViewBasket(store, products, basket);
+                    break;
+                case "8":
+                    Console.WriteLine();
                     ApplicationMenu(store, products, basket);
                     break;
                 default:
                     Console.WriteLine("Такого пункта меню нет!");
                     break;
             }
+        }
+        static void SaveBasket(Basket basket)
+        {
+            XmlSerializer formatter = new XmlSerializer(typeof(Basket));
+            using (FileStream fs = new FileStream("basket.xml", FileMode.OpenOrCreate))
+            {
+                formatter.Serialize(fs, basket);
+            }
+        }
+        static void LoadBasket(Basket basket)
+        {
+            XmlSerializer formatter = new XmlSerializer(typeof(Basket));
+            using (FileStream fs = new FileStream("basket.xml", FileMode.OpenOrCreate))
+            {
+                Basket newbasket = (Basket)formatter.Deserialize(fs);
+                foreach(BasketLine b in newbasket.basketLines)
+                {
+                    basket.AddItem(b.Product);
+                }
+            }
+            File.WriteAllText("basket.xml", "");
         }
         static void GoToCheckout(Basket basket)
         {

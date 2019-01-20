@@ -5,6 +5,7 @@ using OOPLab2.Interface;
 
 namespace OOPLab2.Model
 {
+    [Serializable]
     public class Product: IProduct
     {
         private string _name;

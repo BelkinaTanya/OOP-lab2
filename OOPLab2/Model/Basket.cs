@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace OOPLab2.Model
 {
-    public class Basket
+    [Serializable]
+    public class Basket: IDisposable
     {
-        List<BasketLine> basketLines = new List<BasketLine>();
+        public List<BasketLine> basketLines = new List<BasketLine>();
         public Basket() { }
         public void AddItem(Product product)
         {
@@ -41,6 +43,10 @@ namespace OOPLab2.Model
         public IEnumerable<BasketLine> lines
         {
             get { return basketLines; }
+        }
+        public void Dispose()
+        {
+            Dispose();
         }
         public void PrintBasket()
         {

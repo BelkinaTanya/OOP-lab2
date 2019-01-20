@@ -7,10 +7,12 @@ using OOPLab2.Interface;
 
 namespace OOPLab2.Model
 {
+    [Serializable]
     public class BasketLine
     {
         public Product Product { get; set; }
         public int QuantityOfGoods { get; set; }
+        public BasketLine() { }
         public decimal TotalSum()
         {
           
