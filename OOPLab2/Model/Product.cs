@@ -6,7 +6,7 @@ using OOPLab2.Interface;
 namespace OOPLab2.Model
 {
     [Serializable]
-    public class Product: IProduct
+    public class Product: IProduct, IDisposable
     {
         private string _name;
         private string _category;
@@ -53,5 +53,9 @@ namespace OOPLab2.Model
             Quantity = quantity;
         }
         public override string ToString() => $"Товар: {Name, -25} Цена: {Price:f2} руб.";
+        public void Dispose()
+        {
+            Dispose();
+        }
     }
 }

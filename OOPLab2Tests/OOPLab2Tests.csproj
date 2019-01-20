@@ -57,6 +57,7 @@
     <Compile Include="Model\BasketTests.cs" />
     <Compile Include="Model\CustomerTests.cs" />
     <Compile Include="Model\CheckoutTests.cs" />
+    <Compile Include="Model\ServiceSerializationDBTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

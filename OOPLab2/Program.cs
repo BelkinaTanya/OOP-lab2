@@ -18,6 +18,12 @@ namespace OOPLab2
             Basket basket = new Basket();
             FileLoadStore(store);
             DataBaseFileLoad(products);
+            ServiceSerializationDB.SerializeObjectInXML(products, "DataBase1.xml");
+            List<Product> newListProducts = ServiceSerializationDB.DeserializeObject("DataBase1.xml");
+            //foreach(Product product in newListProducts)
+            //{
+            //    Console.WriteLine(product.ToString());
+            //}            
             try
             {
                 ApplicationMenu(store, products, basket);
